@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '@fortawesome/fontawesome-free/scss/solid.scss';
+@import '@fortawesome/fontawesome-free/scss/regular.scss';
+@import '@fortawesome/fontawesome-free/scss/brands.scss';
+@import 'mdb-angular-ui-kit/assets/scss/mdb.scss';
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+
+h1{
+  font-family: 'Press Start 2P', cursive;
+}
+h5{
+  font-weight: bold;
+}
+.card{
+  box-shadow: 12px 13px 24px 1px #000000;
+}
+.tele{
+  color: inherit;
+}
+body{
+  cursor: default;
+}
+th{
+  font-family: 'Press Start 2P', cursive;
+}

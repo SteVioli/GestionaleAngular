@@ -1,0 +1,62 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+
+  <div class="container" id="container">
+    <div class="mb-2">
+      <p class="logo mt-3 text-center ">&lt; Easy Load &gt;</p>
+      <p class="text-center"> by Stefano Violi</p>
+      <div class="d-flex justify-content-center border-bottom border-2">
+        <a class="ms-3" href="https://mdbootstrap.com/" target="_blank">
+          <i class="fab fa-mdb fa-2x"></i>
+        </a>
+        <i class="fab fa-java fa-2x ms-3 text-warning"></i>
+        <i class="fab fa-angular fa-2x ms-3 text-danger"></i>
+        <a class="ms-3" href="https://www.linkedin.com/in/stefano-violi-7a4a811a2/" target="_blank">
+          <i class="fab fa-linkedin fa-2x linkedin"></i>
+        </a>
+        <a class="ms-3" href="https://github.com/SteVioli?tab=repositories" target="_blank">
+          <i class="fab fa-github-square fa-2x text-success"></i>
+        </a>
+        <a class="ms-3" href="mailto:stefano.violi87@gmail.com" target="_blank">
+          <i class="fas fa-envelope text-danger fa-2x"></i>
+        </a>
+      </div>
+    </div>
+    <div id="user-data">
+      <div class="text-center d-flex justify-content-between ">
+        <p [routerLink]="['/operatore']" class="me-3 text-primary my-0">{{username | titlecase}}</p>
+        <p class="my-0">{{starterDate | date:'d MMMM y h:mm a'}}</p>
+      </div>
+      <div>
+        <div>
+          <div class="d-flex justify-content-between mb-2">
+            <ng-container *ngIf="ruoli.length == 3 ">
+              <a  class="btn btn-outline-warning " [routerLink]="['/crea-trasportatore']"><i class="fas fa-truck-fast"></i>
+              </a>
+            </ng-container>
+            <ng-container *ngIf="ruoli.length == 3 ">
+              <a  class="btn btn-outline-info " [routerLink]="['/crea-cliente']"><i class="fas fa-briefcase"></i>
+              </a>
+            </ng-container>
+            <ng-container *ngIf="ruoli.length == 3 ">
+              <a  class="btn btn-outline-dark " [routerLink]="['/crea-articolo']"><i class="fas fa-circle-plus"></i></a>
+            </ng-container>
+          </div>
+          <div class="d-flex" id="logg">
+            <ng-container *ngIf="ruoli.length == 3 ">
+              <a id="home" class="btn btn-outline-primary" [routerLink]="['/register']"><i class="fas fa fa-user-plus"></i></a>
+            </ng-container>
+            <a  class="btn btn-outline-success " [routerLink]="['/home']"><i class="fas fa-house"></i></a>
+            <button type="button" class="btn btn-outline-danger " (click)="loggedOut()">
+              <i class="fas fa-right-from-bracket"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- Collapsible wrapper -->
+
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->

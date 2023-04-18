@@ -1,0 +1,55 @@
+<app-navbar></app-navbar>
+<h1 class="text-center mt-5">Creazione nuovo Cliente</h1>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-12 col-md-8 col-lg-12 border border-2 border-info">
+      <form ngNativeValidate #f="ngForm" (ngSubmit)="creaCliente(f)">
+        <mdb-form-control class="m-2">
+          <input ngModel  mdbInput name="name" type="text" class="form-control text-capitalize"
+          id="loginUsernameInput" aria-describedby="emailHelp" required>
+          <label mdbLabel class="form-label" for="typeText">Nome</label>
+        </mdb-form-control>
+        <mdb-form-control class="m-2">
+          <input ngModel  mdbInput name="lastname" type="text" class="form-control text-capitalize"
+          id="loginUsernameInput" aria-describedby="emailHelp" required>
+          <label mdbLabel class="form-label" for="typeText">Cognome</label>
+        </mdb-form-control>
+        <mdb-form-control class="m-2">
+          <input ngModel  mdbInput name="nomeAzienda" type="text" class="form-control"
+          id="loginUsernameInput" aria-describedby="emailHelp" required>
+          <label mdbLabel class="form-label" for="typeText">Nome Azienda</label>
+        </mdb-form-control>
+        <mdb-form-control class="m-2">
+          <input ngModel  mdbInput name="indirizzo" type="text" class="form-control text-capitalize"
+          id="loginUsernameInput" aria-describedby="emailHelp" required>
+          <label mdbLabel class="form-label" for="typeText">Indirizzo</label>
+        </mdb-form-control>
+        <mdb-form-control class="m-2">
+          <input ngModel  mdbInput name="city" type="text" class="form-control text-capitalize"
+          id="loginUsernameInput" aria-describedby="emailHelp" required>
+          <label mdbLabel class="form-label" for="typeText">Città</label>
+        </mdb-form-control>
+        <mdb-form-control class="m-2">
+          <input ngModel  mdbInput name="provincia" type="text" class="form-control text-capitalize"
+          id="loginUsernameInput" aria-describedby="emailHelp" required>
+          <label mdbLabel class="form-label" for="typeText">Provincia</label>
+        </mdb-form-control>
+        <mdb-form-control class="m-2">
+          <input ngModel  mdbInput name="telefono" type="tel" class="form-control"
+          id="loginUsernameInput" aria-describedby="emailHelp" minlength="7" maxlength="20" required>
+          <label mdbLabel class="form-label" for="typeText">Telefono</label>
+        </mdb-form-control>
+        <mdb-form-control class="m-2">
+          <input ngModel  mdbInput name="email" type="email" class="form-control"
+          id="loginUsernameInput" aria-describedby="emailHelp" required>
+          <label mdbLabel class="form-label" for="typeText">Email</label>
+        </mdb-form-control>
+          <div class="d-flex justify-content-center mb-3">
+            <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Crea Cliente</button>
+          </div>
+          <p *ngIf="registerSuccess" class="text-success mt-2 text-center">Cliente creato correttamente!</p>
+          <p class="text-danger mt-2 text-center">{{errorMessage | titlecase}}</p>
+      </form>
+    </div>
+  </div>
+</div>

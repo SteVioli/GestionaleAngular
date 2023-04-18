@@ -1,0 +1,39 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AuthServiceService } from 'src/app/auth/auth.service.service';
+
+@Component({
+  selector: 'app-clienti',
+  templateUrl: './clienti.component.html',
+  styleUrls: ['./clienti.component.scss']
+})
+export class ClientiComponent implements OnInit,OnDestroy{
+
+  bodyTag: HTMLBodyElement = document.getElementsByTagName('body')[0];
+  htmlTag: HTMLElement = document.getElementsByTagName('html')[0];
+
+   URL = "http://localhost:8080/easy/cliente/all";
+  clienti: any;
+  private httpOptions = {
+    headers : new HttpHeaders({
+      'Authorization': 'Bearer' + localStorage.getItem('token')
+    })
+  }
+  constructor(private http:HttpClient){
+
+  }
+ngOnInit(): void {
+  const token =JSON.parse(localStorage.getItem("currentUser")!);
+  console.log(token.accessToken)
+  this.http.get(this.URL  , this.httpOptions).subscribe(
+    clienti => this.clienti = clienti
+   );
+    this.bodyTag.classList.add('clienti-page');
+    this.htmlTag.classList.add('clienti-page');
+}
+
+ngOnDestroy(): void {
+  this.bodyTag.classList.remove('clienti-page');
+  this.htmlTag.classList.remove('clienti-page');
+}
+}

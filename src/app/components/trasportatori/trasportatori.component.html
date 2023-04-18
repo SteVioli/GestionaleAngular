@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+<h1 class="text-center mt-5">Contatti Trasporti</h1>
+<div class="table-responsive text-nowrap">
+
+  <table class="table table-striped align-middle mb-0 bg-white mt-3">
+
+    <thead class="bg-light">
+      <tr>
+        <th scope="col">Trasportatore</th>
+        <th scope="col">Email</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Indirizzo</th>
+        <th scope="col">Città</th>
+        <th scope="col">Provincia</th>
+        <th scope="col">ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let tras of trasportatori | sortByOrder">
+      <tr>
+        <td scope="row">
+          <div class="d-flex align-items-center">
+            <i class="fas fa-truck text-danger"></i>
+            <div class="ms-3">
+              <p class="fw-bold mb-1">{{tras.nomeTrasportatore}}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <p class="text-muted mb-0 fw-bold"><a [attr.href]="'mailto:'+tras.email"> {{tras.email}}</a></p>
+        </td>
+        <td>
+          <a class="tele fw-bold" [attr.href]="'tel:' +tras.telefono">{{tras.telefono}}
+            <i class="fas fa-phone-volume ms-3 text-success"></i></a>
+        </td>
+        <td>
+          <p class=" fw-bold">{{tras.indirizzo}}</p>
+        </td>
+        <td>
+          <p class=" fw-bold">{{tras.citta}}</p>
+        </td>
+        <td>
+          <p class=" fw-bold">{{tras.provincia}}</p>
+        </td>
+        <td>
+          <p class=" fw-bold text-danger ">{{tras.id}} <ng-container *ngIf="ruoli.length == 3">
+            <button type="button" class="btn btn-secondary ms-3" (click)="cancellaTrasportatore(tras.id)">
+              <i class="far fa-trash-can"></i></button></ng-container></p>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+</div>

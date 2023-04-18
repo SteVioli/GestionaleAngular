@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+<h1 class="text-center mt-5">Registra nuovo Utente</h1>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-12 col-md-8 col-lg-8 border border-2 border-primary">
+      <!--  -->
+      <form ngNativeValidate #f="ngForm" (ngSubmit)="creaUtente(f)" >
+        <mdb-form-control class="m-2">
+          <input ngModel  mdbInput name="name" type="text" class="form-control text-capitalize"
+          id="loginNameInput" aria-describedby="emailHelp" required>
+          <label mdbLabel class="form-label" for="typeText">Nome</label>
+        </mdb-form-control>
+        <mdb-form-control class="m-2">
+          <input ngModel  mdbInput name="lastname" type="text" class="form-control text-capitalize"
+          id="loginLastnameInput" aria-describedby="emailHelp" required>
+          <label mdbLabel class="form-label" for="typeText">Cognome</label>
+        </mdb-form-control>
+        <mdb-form-control class="m-2">
+          <input ngModel  mdbInput name="username" type="text" class="form-control"
+          id="loginUsernameInput" aria-describedby="emailHelp" required>
+          <label mdbLabel class="form-label" for="typeText">Username</label>
+        </mdb-form-control>
+        <mdb-form-control class="m-2">
+          <input ngModel  mdbInput name="email" type="text" class="form-control"
+          id="loginEmailInput" aria-describedby="emailHelp" required>
+          <label mdbLabel class="form-label" for="typeText">Email</label>
+        </mdb-form-control>
+        <mdb-form-control class="m-2">
+          <input ngModel  mdbInput name="password" type="password" class="form-control"
+          id="loginPasswordInput" aria-describedby="emailHelp" required>
+          <label mdbLabel class="form-label" for="typeText">Password</label>
+        </mdb-form-control>
+          <div class="d-flex justify-content-center">
+            <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Crea Utente</button>
+          </div>
+            <p *ngIf="registerSuccess" class="text-success mt-2 text-center">Utente creato correttamente!</p>
+            <p class="text-danger mt-2 text-center">{{errorMessage | titlecase}}</p>
+      </form>
+    </div>
+  </div>
+</div>

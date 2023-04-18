@@ -1,0 +1,83 @@
+<app-navbar></app-navbar>
+
+<h1 class="text-center mt-5" >
+Pagina personale aziendale
+</h1>
+<section>
+  <div class="container py-5 fw-bold">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-6 mb-4 mb-lg-0">
+        <div class="card mb-3" style="border-radius: .5rem;">
+          <div class="row g-0">
+            <div class="col-md-4 gradient-custom text-center text-white"
+              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+              <ng-container *ngIf="ruoli.length == 1 ">
+                <img src="../../../assets/pixUser.png"
+                  alt="Avatar" class="img-fluid my-5 rounded-circle" style="width: 250px;" />
+              </ng-container>
+              <ng-container *ngIf="ruoli.length == 2 ">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                  alt="Avatar" class="img-fluid my-5" style="width: 250px;" />
+              </ng-container>
+              <ng-container *ngIf="ruoli.length == 3 ">
+              <img src="../../../assets/pixAdmin.jpg"
+                alt="Avatar" class="img-fluid my-5 rounded-circle" style="width: 250px;" />
+              </ng-container>
+              <i class="far fa-edit mb-5"></i>
+            </div>
+            <div class="col">
+              <div class="card-body p-4">
+                <h5>{{user.name | titlecase}} {{user.lastname | titlecase}}</h5>
+                <p></p>
+                <h6>Information</h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col-6 mb-3">
+                    <h6>Email</h6>
+                    <p class="text-muted">{{user.email}}</p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Username</h6>
+                    <p class="text-muted">{{user.username | titlecase}}</p>
+                  </div>
+                </div>
+                <h6>Inquadramento</h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col-10 mb-3">
+                    <h6>Ruolo</h6>
+                    <ng-container *ngIf="ruoli.length == 3 ">
+                      <p class="text-muted">Amministratore - Propetario</p>
+                    </ng-container>
+                    <ng-container *ngIf="ruoli.length == 2 ">
+                      <p class="text-muted">Moderatore - Responsabile</p>
+                    </ng-container>
+                    <ng-container *ngIf="ruoli.length == 1 ">
+                      <p class="text-muted">User - Impiegato/Operaio</p>
+                    </ng-container>
+                  </div>
+                </div>
+                <h6>Fatture</h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col-10 mb-3">
+                    <h6>Totale fatture: {{fatture.length}} <a class="ms-3 text-secondary "><i class="fas fa-folder-open "  (click)="mostraFatture()"></i></a>
+                    </h6>
+                    <ng-container *ngIf="check == true">
+                      <ng-container  *ngFor="let fattura of fatture">
+                        <p class="text-muted"> <span class="text-danger">ID: {{fattura.id | number:'3.0'}}</span>
+                          - <span class="text-primary">  Cliente: </span>{{fattura.cliente.nomeAzienda}}
+                          - <span class="text-primary">Trasportatore: </span> {{fattura.trasportatore.nomeTrasportatore}}
+                          - <span class="text-success">Importo Fattura: </span> {{fattura.importo}} € <a (click)="vediFattura(fattura.id)"><i class="far fa-eye text-primary ms-2"></i></a></p>
+                      </ng-container>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

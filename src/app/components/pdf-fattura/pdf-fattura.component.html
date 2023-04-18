@@ -1,0 +1,113 @@
+<div class="notprint">
+<app-navbar></app-navbar>
+</div>
+<div class="container mt-5" id="stampa">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-12 border border-1 border-dark" id="htmlData">
+      <div class="d-flex justify-content-between">
+        <div class="col-6 border border-1 border-dark mt-5">
+          <p class="table-primary text-center">Azienda Example</p>
+            <div class="ms-2">
+              <p>Titolare</p>
+              <p>Stefano Violi</p>
+              <p>Via example 14</p>
+              <p>Città: Imola -- Provincia: Bologna <br>Info varie: tel: 3334455777</p>
+            </div>
+        </div>
+        <div class="mt-5 me-5">
+          <p>ID Fattura: {{fattura.id}}</p>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between mt-5">
+        <div class="col-5 border border-1 border-dark">
+
+          <p class="table-primary text-center">Destinatario</p>
+            <div class="ms-2">
+              <p>{{fattura.cliente.nomeAzienda}}</p>
+              <p>Spett.le</p>
+              <p>{{fattura.cliente.name}} {{fattura.cliente.lastname}}</p>
+              <p>{{fattura.cliente.indirizzo}}</p>
+              <p>Città: {{fattura.cliente.city}} -- Provincia: {{fattura.cliente.provincia}}</p>
+            </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between mt-5">
+        <div class="col-5 border border-1 border-dark">
+          <p class="table-primary text-center">Commenti</p>
+        </div>
+        <div class="col-5 border border-1 border-dark">
+          <p class="table-primary text-center">Trasportatore</p>
+            <div class="ms-2">
+              <p>{{fattura.trasportatore.nomeTrasportatore}}</p>
+              <p>{{fattura.trasportatore.indirizzo}}</p>
+              <p>Città: {{fattura.trasportatore.citta}}</p>
+              <p>Provincia: {{fattura.trasportatore.provincia}}</p>
+            </div>
+        </div>
+      </div>
+      <table class="table table-bordered mt-5">
+        <tr class="table-primary">
+          <th>ID Prodotto</th>
+          <th>Articolo</th>
+          <th>Prezzo</th>
+          <th>Q.tà</th>
+          <th>Totale</th>
+        </tr>
+        <ng-container *ngFor="let articolo of fattura.articoli">
+          <ng-container *ngIf="articolo.quantitaOrdine > 0">
+            <tr>
+              <td>{{articolo.articolo.id}}</td>
+              <td>{{articolo.articolo.nomeArticolo}}</td>
+              <td>{{articolo.articolo.prezzo | number:'.2'}} €</td>
+              <td>{{articolo.quantitaOrdine}}</td>
+              <td>{{articolo.articolo.prezzo * articolo.quantitaOrdine | number:'.2'}} €</td>
+            </tr>
+          </ng-container>
+        </ng-container>
+      </table>
+      <div class="d-flex justify-content-between mt-5">
+        <div>
+          <p>Totale Fattura</p>
+          <p>{{fattura.importo | number:'.2'}} €</p>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between mt-5">
+        <div class="col-3 border border-1 border-dark">
+          <p class="table-primary text-center">Firma azienda e trasportatore</p>
+            <div class="ms-2">
+              <p>Firma azienda</p>
+              <p>_____________________________</p>
+              <p>Firma trasportatore</p>
+              <p>_____________________________</p>
+            </div>
+        </div>
+        <div class="col-4 border border-1 border-dark">
+          <p class="table-primary text-center">Timbro azienda</p>
+        </div>
+        <div class="col-4 border border-1 border-dark">
+          <p class="table-primary text-center">Timbro trasportatore</p>
+        </div>
+      </div>
+      <div class="col-4 border border-1 border-dark mt-5">
+        <p class="table-primary text-center">Firma cliente</p>
+          <div class="ms-2">
+            <p>Firma cliente</p>
+            <p>_____________________________</p>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-4 text-right d-flex justify-content-between mt-5 bottoni-finali">
+      <div>
+        <button class="btn btn-outline-primary" [routerLink]="['/fatture']" type="submit">
+          <i class="fas fa-arrow-left-long "></i>
+        </button>
+      </div>
+      <div>
+        <button class="btn btn-success btn-block" (click)="openPDF()">Download PDF</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="d-flex justify-content-center">
+</div>
+

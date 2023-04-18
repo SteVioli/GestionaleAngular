@@ -1,0 +1,63 @@
+<app-navbar></app-navbar>
+<h1 class="text-center mt-5">Storico Fatture Aziendali</h1>
+<div class="ms-4 mt-5">
+  <h4 class="text-center text-danger">Filtra per cliente</h4>
+  <div class="d-flex justify-content-center">
+    <select name="idCliente"class="browser-default custom-select" required [(ngModel)]="nomeCliente"
+    (click)="filtraFatturaPerCliente(nomeCliente)">
+        <ng-container *ngFor="let cliente of clienti">
+          <option value="{{cliente.nomeAzienda}}">{{cliente.nomeAzienda}}</option>
+        </ng-container>
+    </select>
+    <i (click)="ricarica()" class="fas fa-rotate-right ms-4 text-primary fa-2x"></i>
+  </div>
+</div>
+<div class="table-responsive text-nowrap">
+  <table class="table table-striped align-middle mb-0 bg-white mt-3">
+    <thead class="bg-light">
+      <tr>
+        <th scope="col">Operatore</th>
+        <th scope="col">Importo fattura</th>
+        <th scope="col">Cliente</th>
+        <th scope="col">Trasportatore</th>
+        <th scope="col">Identificativo fattura</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let fat of fatture">
+      <tr>
+        <td scope="row">
+          <div class="d-flex align-items-center">
+              <p class="fw-bold mb-1 text-primary">{{fat.utente.name | titlecase}}  {{fat.utente.lastname | titlecase}}</p>
+          </div>
+        </td>
+        <td>
+          <div class="d-flex align-items-center text-center">
+              <p class="fw-bold mb-1">{{fat.importo | number:".2"}} €</p>
+          </div>
+        </td>
+        <td>
+          <div class="d-flex align-items-center">
+              <p class="fw-bold mb-1">{{fat.cliente.nomeAzienda | titlecase}}</p>
+          </div>
+        </td>
+        <td>
+          <div class="d-flex align-items-center">
+              <p class="fw-bold mb-1">{{fat.trasportatore.nomeTrasportatore | titlecase}}</p>
+          </div>
+        </td>
+        <td>
+          <div class="d-flex align-items-center justify-content-between">
+              <p class="fw-bold mb-1 text-danger">{{fat.id | number:'2.'}} . {{fat.cliente.id}}</p>
+              <a (click)="vediFattura(fat.id)"><i class="far fa-eye text-primary"></i></a>
+          </div>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+</div>
+
+
+
+

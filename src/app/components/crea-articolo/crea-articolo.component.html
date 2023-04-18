@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+<h1 class="text-center mt-5">Inserimento nuovo Articolo</h1>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-12 col-md-8 col-lg-12 border border-2 border-dark">
+      <form ngNativeValidate #f="ngForm" (ngSubmit)="creaArticolo(f)">
+        <mdb-form-control class="m-2">
+          <input ngModel  mdbInput name="nomeArticolo" type="text" class="form-control"
+          id="loginUsernameInput" aria-describedby="emailHelp" required>
+          <label mdbLabel class="form-label" for="typeText">Nome Articolo</label>
+        </mdb-form-control>
+        <mdb-form-control class="m-2">
+          <input ngModel  mdbInput name="quantita" type="number" class="form-control"
+          id="loginUsernameInput" aria-describedby="emailHelp" required>
+          <label mdbLabel class="form-label" for="typeText">Quantità</label>
+        </mdb-form-control>
+        <mdb-form-control class="m-2">
+          <input ngModel  mdbInput name="prezzo" type="text" class="form-control"
+          id="loginUsernameInput" aria-describedby="emailHelp" required >
+          <label mdbLabel class="form-label" for="typeText">Prezzo</label>
+        </mdb-form-control>
+          <div class="d-flex justify-content-center">
+            <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Crea Articolo</button>
+          </div>
+          <p *ngIf="registerSuccess" class="text-success mt-2 text-center">Articolo creato correttamente!</p>
+          <p class="text-danger mt-2 text-center">{{errorMessage | titlecase}}</p>
+      </form>
+    </div>
+  </div>
+</div>

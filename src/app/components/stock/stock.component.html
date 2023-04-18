@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+<h1 class="text-center mt-5">Stock Aziendale</h1>
+<div class="table-responsive text-nowrap">
+  <table class="table table-striped align-middle mb-0 bg-white">
+    <thead class="bg-light">
+      <tr>
+        <th scope="col">ID Nome Articolo</th>
+        <th scope="col">Quantità in stock</th>
+        <th scope="col">Prezzo Vendita</th>
+        <th scope="col">Codice Articolo ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let articolo of articoli | sortByOrder">
+      <tr>
+        <td scope="row">
+          <div class="d-flex align-items-center" *ngIf="articolo.quantita == 0">
+              <p class="fw-bold mb-1 text-danger">{{articolo.nomeArticolo | titlecase}}</p>
+          </div>
+          <div class="d-flex align-items-center" *ngIf="articolo.quantita > 0 && articolo.quantita < 51">
+            <p class="fw-bold mb-1 text-warning">{{articolo.nomeArticolo | titlecase}}</p>
+        </div>
+        <div class="d-flex align-items-center" *ngIf="articolo.quantita >= 51">
+          <p class="fw-bold mb-1 text-primary">{{articolo.nomeArticolo | titlecase}}</p>
+      </div>
+        </td>
+        <td>
+          <div class="d-flex align-items-center text-center">
+              <p class="fw-bold mb-1">{{articolo.quantita}}</p>
+          </div>
+        </td>
+        <td>
+          <div class="d-flex align-items-center">
+              <p class="fw-bold mb-1">{{articolo.prezzo | number: '.2' }} €</p>
+          </div>
+        </td>
+        <td>
+          <div class="d-flex align-items-center">
+              <p class="fw-bold mb-1 text-danger">{{articolo.id | number : "2.0"}}  </p>
+          </div>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+</div>
+
+
+<!--
+  container da inserire se si vuole lasciare al responsabile una possibilità di eliminare definitivamente un articolo. ma meglio lasciare sempre uno storico
+
+  <ng-container *ngIf="ruoli.length == 3"><button type="button" class="btn btn-danger ms-3" (click)="cancellaArticolo(articolo.id)"><i class="far fa-trash-can"></i></button></ng-container>
+ -->
+

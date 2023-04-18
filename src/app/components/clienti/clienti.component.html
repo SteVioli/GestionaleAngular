@@ -1,0 +1,66 @@
+<app-navbar></app-navbar>
+<h1 class="text-center mt-5">Clienti</h1>
+<div class="table-responsive text-nowrap">
+
+  <table class="table table-striped align-middle mb-0 bg-white">
+    <thead class="bg-light">
+      <tr>
+        <th scope="col">Proprietario</th>
+        <th scope="col">Azienda Cliente</th>
+        <th scope="col">Indirizzo</th>
+        <th scope="col">Contatti</th>
+        <th scope="col">Identificativo Cliente</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let cliente of clienti | sortByOrder">
+      <tr>
+        <td scope="row">
+          <div class="d-flex align-items-center">
+              <div>
+                <p class="fw-bold mb-1">{{cliente.name | titlecase}}</p>
+                <p class="fw-bold mb-1">{{cliente.lastname | titlecase}}</p>
+              </div>
+          </div>
+        </td>
+        <td>
+          <div class="d-flex align-items-center text-center justify-content-between">
+              <p class="fw-bold mb-1">{{cliente.nomeAzienda | titlecase}}</p>
+              <div>
+                <a class="ms-3" [attr.href]="'https://wa.me/39'+cliente.telefono+'?'" target="_blank">
+                  <i class="fab fa-2x fa-whatsapp-square"></i></a>
+                <a class="tele ms-3" [attr.href]="'tel:' +cliente.telefono"><i class="fas fa-2x fa-phone-volume   text-success">
+                </i></a>
+              </div>
+          </div>
+        </td>
+        <td>
+          <div class="d-flex align-items-center">
+              <div>
+              <p class="fw-bold mb-1">{{cliente.indirizzo | titlecase}}</p>
+              <p class="fw-bold mb-1">{{cliente.city | titlecase}} Provincia:  {{cliente.provincia | titlecase}}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="d-flex align-items-center">
+            <div>
+              <p class="text-muted mb-0 fw-bold"><a [attr.href]="'mailto:'+cliente.email"> {{cliente.email}}</a></p>
+              <a class="tele fw-bold" [attr.href]="'tel:' +cliente.telefono">{{cliente.telefono}}</a>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="d-flex align-items-center">
+              <p class="fw-bold mb-1 text-danger">{{cliente.id | number : "2.0"}} <ng-container *ngIf="ruoli.length == 3">
+                <button type="button" class="btn btn-secondary ms-3" (click)="cancellaCliente(cliente.id)">
+                  <i class="far fa-trash-can"></i></button></ng-container></p>
+          </div>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+</div>
+
+

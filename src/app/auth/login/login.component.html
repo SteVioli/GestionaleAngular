@@ -1,0 +1,33 @@
+<h1 class="text-center mt-5">Login</h1>
+  <form ngNativeValidate #f="ngForm" (ngSubmit)=onSubmit(f)>
+    <div class="container mt-5 loginsfondo">
+      <div class="row d-flex justify-content-center">
+        <div class="col-10 col-md-8 col-lg-6 border border-1 border-dark rounded login">
+        <mdb-form-control class="m-2">
+          <input ngModel  mdbInput name="username" type="text" class="form-control"
+          id="loginUsernameInput" aria-describedby="emailHelp" required>
+          <label mdbLabel class="form-label" for="typeText">Username</label>
+        </mdb-form-control>
+        <mdb-form-control class="m-2">
+          <input ngModel mdbInput name="password" type="password"  class="form-control"
+          id="loginPasswordInput" required>
+          <label mdbLabel class="form-label" for="typeText">Password</label>
+        </mdb-form-control>
+        <div class="modal-footer">
+          <button id="accedi_btn" type="submit" [disabled]="!f.valid" class="btn btn-primary">Accedi</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="d-flex justify-content-center">
+    <p class="text-danger text-center mt-5" id="credenziali" *ngIf=!isLogged>Credenziali non valide</p>
+  </div>
+<div class="prova mt-5">
+  <div class="pacman">
+    <div class="pacman-top"></div>
+    <div class="pacman-bottom"></div>
+    <div class="feed"></div>
+  </div>
+</div>
+
