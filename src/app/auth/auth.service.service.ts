@@ -25,16 +25,15 @@ export interface UserSignUp {
 export class AuthServiceService {
   private currentUserSubject: BehaviorSubject<User | null>;
   public currentUser: Observable<User | null>;
-
   private authStatusSource: Subject<boolean> = new Subject();
   public authStatus$: Observable<boolean> = this.authStatusSource.asObservable();
-
+  private authSubject: BehaviorSubject<any> = new BehaviorSubject(null);
+  user$: Observable<any> = this.authSubject.asObservable();
+  isLoggedIn$: Observable<boolean> = this.user$.pipe(map((user) => !!user));
   private httpOptions: HttpHeaders =  new HttpHeaders({
     Authorization: 'Bearer' + localStorage.getItem('token')
   });
-
   private apiUrl: string = 'http://localhost:8080/api/auth';
-
   isLoggedIn: boolean = false;
 
   constructor(private http: HttpClient, private router: Router) {
@@ -44,11 +43,6 @@ export class AuthServiceService {
     );
     this.currentUser = this.currentUserSubject.asObservable();
   }
-
-  private authSubject: BehaviorSubject<any> = new BehaviorSubject(null);
-
-  user$: Observable<any> = this.authSubject.asObservable();
-  isLoggedIn$: Observable<boolean> = this.user$.pipe(map((user) => !!user));
 
   public get currentUserValue(): User | null {
     return this.currentUserSubject.value;
