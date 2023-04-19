@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
-import { BehaviorSubject, Observable, Subject, map, throwError } from 'rxjs';
 import { Router } from '@angular/router';
-
+import { BehaviorSubject, map, Observable, Subject } from 'rxjs';
 
 export interface User {
   id: number;
@@ -11,13 +10,13 @@ export interface User {
   token: string;
 }
 
-export interface UserSignUp{
-  name:string;
-  lastname:string;
-  username:string;
-  email:string;
-  password:string;
-  roles?:[];
+export interface UserSignUp {
+  name: string;
+  lastname: string;
+  username: string;
+  email: string;
+  password: string;
+  roles: [];
 }
 
 @Injectable({
@@ -27,29 +26,29 @@ export class AuthServiceService {
   private currentUserSubject: BehaviorSubject<User | null>;
   public currentUser: Observable<User | null>;
 
-  private authStatusSource = new Subject<boolean>();
-  public authStatus$ = this.authStatusSource.asObservable();
+  private authStatusSource: Subject<boolean> = new Subject();
+  public authStatus$: Observable<boolean> = this.authStatusSource.asObservable();
 
   private httpOptions: HttpHeaders =  new HttpHeaders({
-    'Authorization': 'Bearer' + localStorage.getItem('token')
+    Authorization: 'Bearer' + localStorage.getItem('token')
   });
 
-  private apiUrl = 'http://localhost:8080/api/auth';
+  private apiUrl: string = 'http://localhost:8080/api/auth';
 
-  isLoggedIn = false;
+  isLoggedIn: boolean = false;
 
   constructor(private http: HttpClient, private router: Router) {
-    const storedUser = localStorage.getItem('currentUser');
-    this.currentUserSubject = new BehaviorSubject<User | null>(
-      storedUser ? JSON.parse(storedUser) : null
+    const storedUser: string | null = localStorage.getItem('currentUser');
+    this.currentUserSubject = new BehaviorSubject(
+      storedUser !== null ? JSON.parse(storedUser) : null
     );
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  private authSubject = new BehaviorSubject<any>(null);
+  private authSubject: BehaviorSubject<any> = new BehaviorSubject(null);
 
-  user$ = this.authSubject.asObservable();
-  isLoggedIn$ = this.user$.pipe(map((user) => !!user));
+  user$: Observable<any> = this.authSubject.asObservable();
+  isLoggedIn$: Observable<boolean> = this.user$.pipe(map((user) => !!user));
 
   public get currentUserValue(): User | null {
     return this.currentUserSubject.value;
@@ -66,12 +65,12 @@ export class AuthServiceService {
     );
   }
 
-  creaUtente(user:User){
+  creaUtente(user:User): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`,user,{headers: this.httpOptions, responseType:'text'});
   }
 
-  getToken(){
-    const token =JSON.parse(localStorage.getItem("currentUser")!);
+  getToken(): any {
+    const token = JSON.parse(localStorage.getItem("currentUser")!);
     return token.accessToken
   }
 
@@ -81,9 +80,9 @@ export class AuthServiceService {
     this.updateAuthStatus(false);
   }
 
-  isAuthenticated(){
-    const storedUser = localStorage.getItem('currentUser');
-    if(!storedUser){
+  isAuthenticated(): void {
+    const storedUser: string | null = localStorage.getItem('currentUser');
+    if (!storedUser) {
       this.router.navigate(['/login'])
     }
   }
@@ -92,34 +91,8 @@ export class AuthServiceService {
     this.authStatusSource.next(status);
   }
 
-  isUserLoggedIn() {
-    let user = localStorage.getItem('username')
-    if(user != null){
-
-      return true
-    }
-    return false
+  isUserLoggedIn(): boolean {
+    const user = localStorage.getItem('username');
+    return user != null;
   }
-
-  private errors(err: any) {
-    switch (err.error) {
-      case "Email and password are required":
-
-        throw new Error('Email e password sono obbligatorie');
-        break;
-      case "Email already exists":
-        return throwError('Utente già registrato');
-        break;
-      case "Email format is invalid":
-        return throwError('Email scritta male');
-        break;
-      case "Cannot find user":
-        return throwError('L\'utente non esiste');
-        break;
-      default:
-        return throwError('Errore nella chiamata');
-        break
-    }
-  }
-
 }
