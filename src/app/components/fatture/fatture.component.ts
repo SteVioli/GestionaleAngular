@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { Cliente } from 'src/app/_models/cliente.model';
-import { AuthService } from 'src/app/auth/auth.service.service';
+import { AuthService } from 'src/app/auth/auth.service';
 import { ClientiService } from 'src/app/services/clienti.service';
 import { FattureService } from 'src/app/services/fatture.service';
 

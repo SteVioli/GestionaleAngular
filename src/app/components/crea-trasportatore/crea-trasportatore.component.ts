@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, catchError, of } from 'rxjs';
-import { AuthService } from 'src/app/auth/auth.service.service';
+import { AuthService } from 'src/app/auth/auth.service';
 import { TrasportatoreService } from 'src/app/services/trasportatore.service';
 import { UserService } from 'src/app/services/user.service';
 

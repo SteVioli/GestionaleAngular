@@ -10,7 +10,7 @@ import { TrasportatoreService } from 'src/app/services/trasportatore.service';
 import { UserService } from 'src/app/services/user.service';
 import { FattureService } from 'src/app/services/fatture.service';
 import { Fattura } from 'src/app/_models/fattura.model';
-import { AuthService } from 'src/app/auth/auth.service.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-spedizione',

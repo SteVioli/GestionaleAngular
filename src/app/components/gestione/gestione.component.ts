@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Articolo } from 'src/app/_models/articolo.model';
-import { AuthService } from 'src/app/auth/auth.service.service';
+import { AuthService } from 'src/app/auth/auth.service';
 import { StockService } from 'src/app/services/stock.service';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {jsPDF} from 'jspdf';
 import html2canvas from 'html2canvas';
-import { AuthService } from 'src/app/auth/auth.service.service';
+import { AuthService } from 'src/app/auth/auth.service';
 import { FattureService } from 'src/app/services/fatture.service';
 import { Fattura } from 'src/app/_models/fattura.model';
 import { ActivatedRoute } from '@angular/router';
