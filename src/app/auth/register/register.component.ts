@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthServiceService} from '../auth.service.service';
+import { AuthService} from '../auth.service.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit{
   ruoli = [];
   registerSuccess: boolean = false;
 
-  constructor(private authService: AuthServiceService,
+  constructor(private authService: AuthService,
               private router: Router,
               private userService: UserService){}
 

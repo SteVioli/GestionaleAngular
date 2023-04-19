@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/_models/user.model';
-import { AuthServiceService } from 'src/app/auth/auth.service.service';
+import { AuthService } from 'src/app/auth/auth.service.service';
 import { FattureService } from 'src/app/services/fatture.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -31,7 +31,7 @@ export class OperatoreComponent implements OnInit{
   fatture: any = [];
   check: boolean = false;
   constructor(private userService: UserService,
-              private authService: AuthServiceService,
+              private authService: AuthService,
               private fattureService: FattureService,
               private router: Router){}
 

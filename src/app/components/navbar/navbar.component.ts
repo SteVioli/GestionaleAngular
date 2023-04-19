@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/_models/user.model';
-import { AuthServiceService } from 'src/app/auth/auth.service.service';
+import { AuthService } from 'src/app/auth/auth.service.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit{
     roles: []
   };
   ruoli = [];
-  constructor(private authService: AuthServiceService,
+  constructor(private authService: AuthService,
               private router: Router,
               private userService:UserService) {}
 

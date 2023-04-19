@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { Cliente } from 'src/app/_models/cliente.model';
-import { AuthServiceService } from 'src/app/auth/auth.service.service';
+import { AuthService } from 'src/app/auth/auth.service.service';
 import { ClientiService } from 'src/app/services/clienti.service';
 import { FattureService } from 'src/app/services/fatture.service';
 
@@ -17,7 +17,7 @@ export class FattureComponent implements OnInit{
   clienti:Cliente[] = [];
 
   constructor(private fattureService: FattureService,
-              private authService: AuthServiceService,
+              private authService: AuthService,
               private router: Router,
               private clientiService: ClientiService) {}
 

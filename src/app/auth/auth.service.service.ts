@@ -22,7 +22,7 @@ export interface UserSignUp {
 @Injectable({
   providedIn: 'root'
 })
-export class AuthServiceService {
+export class AuthService {
   private currentUserSubject: BehaviorSubject<User | null>;
   public currentUser: Observable<User | null>;
   private authStatusSource: Subject<boolean> = new Subject();

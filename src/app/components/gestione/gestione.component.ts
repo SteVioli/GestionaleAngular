@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Articolo } from 'src/app/_models/articolo.model';
-import { AuthServiceService } from 'src/app/auth/auth.service.service';
+import { AuthService } from 'src/app/auth/auth.service.service';
 import { StockService } from 'src/app/services/stock.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class GestioneComponent implements OnInit{
   testo: string = "INSERIMENTO ARTICOLO, in attesa..."
 
 
-  constructor(private articoloService: StockService, private router: Router, private authService: AuthServiceService){}
+  constructor(private articoloService: StockService, private router: Router, private authService: AuthService){}
 
 
 

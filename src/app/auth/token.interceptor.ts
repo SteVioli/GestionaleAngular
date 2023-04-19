@@ -6,12 +6,12 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AuthServiceService } from './auth.service.service';
+import { AuthService } from './auth.service.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-  constructor(public authSrv: AuthServiceService) {}
+  constructor(public authSrv: AuthService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     if (request.url.includes('/api/auth/login') || request.url.includes('/api/auth/register')) {

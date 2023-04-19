@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { User } from 'src/app/_models/user.model';
-import { AuthServiceService } from 'src/app/auth/auth.service.service';
+import { AuthService } from 'src/app/auth/auth.service.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -25,7 +25,7 @@ username: string = '';
 ruoli= [];
 
   constructor(private userService: UserService,
-              private authService: AuthServiceService){}
+              private authService: AuthService){}
 
   ngOnInit(): void {
     this.authService.isAuthenticated();

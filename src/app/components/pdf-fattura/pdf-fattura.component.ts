@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {jsPDF} from 'jspdf';
 import html2canvas from 'html2canvas';
-import { AuthServiceService } from 'src/app/auth/auth.service.service';
+import { AuthService } from 'src/app/auth/auth.service.service';
 import { FattureService } from 'src/app/services/fatture.service';
 import { Fattura } from 'src/app/_models/fattura.model';
 import { ActivatedRoute } from '@angular/router';
@@ -16,7 +16,7 @@ export class PdfFatturaComponent implements OnInit{
   id: number = 0;
   fattura!: Fattura;
 
-  constructor(private authService: AuthServiceService,
+  constructor(private authService: AuthService,
               private fattureService: FattureService,
               private activatedRoute: ActivatedRoute){}
 

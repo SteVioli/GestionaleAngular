@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, catchError, of } from 'rxjs';
-import { AuthServiceService } from 'src/app/auth/auth.service.service';
+import { AuthService } from 'src/app/auth/auth.service.service';
 import { StockService } from 'src/app/services/stock.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -17,7 +17,7 @@ export class CreaArticoloComponent implements OnInit{
   errorMessage: string = '';
   registerSuccess: boolean = false;
 
-  constructor(private authService: AuthServiceService,
+  constructor(private authService: AuthService,
               private stockService: StockService,
               private userService: UserService,
               private router: Router){}

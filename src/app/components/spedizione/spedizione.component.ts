@@ -10,7 +10,7 @@ import { TrasportatoreService } from 'src/app/services/trasportatore.service';
 import { UserService } from 'src/app/services/user.service';
 import { FattureService } from 'src/app/services/fatture.service';
 import { Fattura } from 'src/app/_models/fattura.model';
-import { AuthServiceService } from 'src/app/auth/auth.service.service';
+import { AuthService } from 'src/app/auth/auth.service.service';
 
 @Component({
   selector: 'app-spedizione',
@@ -43,7 +43,7 @@ export class SpedizioneComponent implements OnInit{
               private userService: UserService,
               private stockService: StockService,
               private fatturaService: FattureService,
-              private authService: AuthServiceService) {}
+              private authService: AuthService) {}
 
   creaFattura(){
     this.fatturaService.creaFattura(this.clienteId,this.user.id,this.trasportatoreId,this.articoliOrdine).subscribe(ele => console.log(ele));

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Trasportatore } from 'src/app/_models/trasportatore.model';
-import { AuthServiceService } from 'src/app/auth/auth.service.service';
+import { AuthService } from 'src/app/auth/auth.service.service';
 import { TrasportatoreService } from 'src/app/services/trasportatore.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -16,7 +16,7 @@ ruoli= [];
 username: string = '';
   constructor(private trasportatoreService: TrasportatoreService,
               private userService: UserService,
-              private authService: AuthServiceService){}
+              private authService: AuthService){}
 
   ngOnInit(): void {
     this.authService.isAuthenticated();

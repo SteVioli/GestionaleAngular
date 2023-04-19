@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { AuthServiceService } from '../auth.service.service';
+import { AuthService } from '../auth.service.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit{
   isLogged = true;
   username: string = "";
 
-  constructor(private authService: AuthServiceService,
+  constructor(private authService: AuthService,
               private router: Router) { }
 
   ngOnInit(): void { }
